@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fullerton Health - Provider Portal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+            margin: 0;
+        }
+
+        .header {
+            background-color: #003366;
+            color: white;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 4px solid #ffcc00;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 30px auto;
+            background: white;
+            border: 1px solid #ddd;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-tabs {
+            background: #eee;
+            border-bottom: 1px solid #ddd;
+            padding: 0 20px;
+            display: flex;
+            gap: 5px;
+        }
+
+        .tab {
+            padding: 12px 20px;
+            background: #ddd;
+            color: #555;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            margin-top: 5px;
+            border-radius: 4px 4px 0 0;
+        }
+
+        .tab.active {
+            background: white;
+            color: #003366;
+            border: 1px solid #ddd;
+            border-bottom: 1px solid white;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #333;
+            font-size: 13px;
+        }
+
+        .form-input {
+            padding: 8px;
+            border: 1px solid #ccc;
+            width: 300px;
+        }
+
+        .btn-submit {
+            background-color: #0056b3;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .btn-submit:hover {
+            background-color: #004494;
+        }
+
+        .result-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            font-size: 13px;
+        }
+
+        .result-table th {
+            background-color: #003366;
+            color: white;
+            padding: 10px;
+            text-align: left;
+        }
+
+        .result-table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+        }
+
+        .status-active {
+            color: green;
+            font-weight: bold;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <div class="logo">Fullerton Health</div>
+        <div style="font-size: 14px;">Welcome, Bedok Medical Clinic (SG-8221) | <a href="#"
+                style="color:#ffcc00;">Logout</a></div>
+    </div>
+
+    <div class="container">
+        <div class="nav-tabs">
+            <div class="tab">Dashboard</div>
+            <div class="tab active">Benefit Enquiry</div>
+            <div class="tab">Claims Submission</div>
+            <div class="tab">Reports</div>
+        </div>
+
+        <div class="content">
+            <h2 style="margin-top:0; color: #003366; border-bottom: 2px solid #eee; padding-bottom: 10px;">Benefit
+                Entitlement Enquiry</h2>
+
+            <div style="background: #fdfdfd; padding: 20px; border: 1px solid #eee; margin-bottom: 20px;">
+                <div class="form-group">
+                    <label class="form-label">Search Criteria</label>
+                    <select class="form-input">
+                        <option>NRIC / FIN</option>
+                        <option>Member ID</option>
+                        <option>Passport No</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Identification Number</label>
+                    <input type="text" id="nricInput" class="form-input" placeholder="Enter Patient NRIC">
+                </div>
+                <button class="btn-submit">Search Database</button>
+            </div>
+
+            <div id="resultsArea" class="hidden">
+                <h3 style="color: #666; font-size: 16px;">Search Results</h3>
+
+                <table class="result-table">
+                    <thead>
+                        <tr>
+                            <th>Company</th>
+                            <th>Member Name</th>
+                            <th>Plan</th>
+                            <th>Visit Type</th>
+                            <th>Co-Pay (GST incl.)</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>AON SINGAPORE PTE LTD</td>
+                            <td>TAN AH GAO</td>
+                            <td>GP-Silver</td>
+                            <td>Acute</td>
+                            <td>$10.00</td>
+                            <td class="status-active">COVERED</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <br>
+                <div
+                    style="background: #fffff0; border: 1px solid #ffd700; padding: 10px; font-size: 12px; color: #555;">
+                    <strong>Note to Clinic:</strong> Verify patient's original NRIC against the record above. Co-payment
+                    is to be collected from patient at point of service.
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="tpa_fullerton.js"></script>
+</body>
+
+</html>

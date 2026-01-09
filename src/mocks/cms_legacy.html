@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClinicAssist Legacy [v9.2] - Patient Reg</title>
+    <style>
+        body {
+            font-family: 'Tahoma', 'Verdana', sans-serif;
+            font-size: 11px;
+            background-color: #d4d0c8;
+            margin: 0;
+            padding: 0;
+        }
+
+        .window {
+            width: 900px;
+            margin: 20px auto;
+            background-color: #ece9d8;
+            border: 2px solid #fff;
+            border-right-color: #716f64;
+            border-bottom-color: #716f64;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .title-bar {
+            background: linear-gradient(to right, #0058e6, #3a93ff);
+            padding: 3px 5px;
+            color: white;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .menu-bar {
+            background-color: #ece9d8;
+            padding: 2px 5px;
+            border-bottom: 1px solid #a0a0a0;
+            display: flex;
+            gap: 15px;
+        }
+
+        .menu-item {
+            cursor: pointer;
+        }
+
+        .menu-item:hover {
+            background-color: #316ac5;
+            color: white;
+        }
+
+        .toolbar {
+            padding: 5px;
+            background: #ece9d8;
+            border-bottom: 1px solid #fff;
+            display: flex;
+            gap: 5px;
+        }
+
+        .tool-btn {
+            border: 1px solid transparent;
+            padding: 2px;
+        }
+
+        .tool-btn:hover {
+            border: 1px solid #316ac5;
+            background-color: #c1d2ee;
+        }
+
+        .content {
+            padding: 10px;
+        }
+
+        fieldset {
+            border: 1px solid #d0d0bf;
+            border-radius: 3px;
+            padding: 8px;
+            margin-bottom: 10px;
+        }
+
+        legend {
+            color: #0046d5;
+            font-weight: bold;
+        }
+
+        .form-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 6px;
+        }
+
+        .label {
+            width: 100px;
+            text-align: right;
+            margin-right: 10px;
+            color: #333;
+        }
+
+        input[type="text"],
+        select {
+            border: 1px solid #7f9db9;
+            padding: 2px;
+            font-family: 'Tahoma';
+            font-size: 11px;
+            width: 200px;
+        }
+
+        input[readonly] {
+            background-color: #e0e0e0;
+        }
+
+        .tabs {
+            display: flex;
+            border-bottom: 1px solid #999;
+            margin-top: 10px;
+            padding-left: 5px;
+        }
+
+        .tab {
+            padding: 4px 12px;
+            border: 1px solid #999;
+            border-bottom: none;
+            background: #ece9d8;
+            margin-right: 2px;
+            border-radius: 3px 3px 0 0;
+            cursor: pointer;
+        }
+
+        .tab.active {
+            background: #fff;
+            font-weight: bold;
+            position: relative;
+            top: 1px;
+            height: 16px;
+            border-bottom: 1px solid #fff;
+        }
+
+        .tab-content {
+            background: #fff;
+            border: 1px solid #999;
+            padding: 15px;
+            height: 180px;
+        }
+
+        .status-bar {
+            border-top: 1px solid #a0a0a0;
+            padding: 3px;
+            background: #ece9d8;
+            color: #555;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .grid-table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 1px solid #999;
+        }
+
+        .grid-table th {
+            background: #e0e0e0;
+            border: 1px solid #999;
+            padding: 3px;
+            text-align: left;
+            font-weight: normal;
+        }
+
+        .grid-table td {
+            border: 1px solid #eee;
+            padding: 2px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="window">
+        <div class="title-bar">
+            <span>Patient Registration - [Edit Mode]</span>
+            <span style="font-family: monospace;">[X]</span>
+        </div>
+
+        <div class="menu-bar">
+            <span class="menu-item">File</span>
+            <span class="menu-item">Edit</span>
+            <span class="menu-item">View</span>
+            <span class="menu-item">Modules</span>
+            <span class="menu-item">Help</span>
+        </div>
+
+        <div class="toolbar">
+            <button class="tool-btn">💾 Save</button>
+            <button class="tool-btn">❌ Cancel</button>
+            <span style="border-left: 1px solid #a0a0a0; margin: 0 5px;"></span>
+            <button class="tool-btn">🖨 Print Label</button>
+            <button class="tool-btn">🔍 Search NRIC</button>
+        </div>
+
+        <div class="content">
+            <div style="display: flex; gap: 10px;">
+                <div style="flex: 1;">
+                    <fieldset>
+                        <legend>Patient Particulars</legend>
+                        <div class="form-row">
+                            <span class="label">NRIC/FIN:</span>
+                            <input type="text" id="extracted-nric" value="S1234567D" style="background-color: #ffffc0;">
+                            <span style="color:red; margin-left:5px;">*</span>
+                        </div>
+                        <div class="form-row">
+                            <span class="label">Full Name:</span>
+                            <input type="text" id="extracted-name" value="TAN AH GAO" style="width: 250px;">
+                        </div>
+                        <div class="form-row">
+                            <span class="label">Chinese Name:</span>
+                            <input type="text" value="陈阿狗" style="width: 80px;">
+                        </div>
+                        <div class="form-row">
+                            <span class="label">D.O.B:</span>
+                            <input type="text" value="15/05/1985"> <span style="margin-left:5px;">Age: 39</span>
+                        </div>
+                        <div class="form-row">
+                            <span class="label">Gender:</span>
+                            <select style="width: 80px;">
+                                <option>Male</option>
+                                <option>Female</option>
+                            </select>
+                        </div>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Contact Info</legend>
+                        <div class="form-row">
+                            <span class="label">Address:</span>
+                            <input type="text" value="Blk 123 Bedok North St 2" style="width: 280px;">
+                        </div>
+                        <div class="form-row">
+                            <span class="label"></span>
+                            <input type="text" value="#05-101" style="width: 80px;">
+                            <span style="margin: 0 5px;">Singapore</span>
+                            <input type="text" value="460123" style="width: 60px;">
+                        </div>
+                        <div class="form-row">
+                            <span class="label">Mobile:</span>
+                            <input type="text" value="91234567">
+                        </div>
+                    </fieldset>
+                </div>
+
+                <div style="width: 280px;">
+                    <fieldset style="background-color: #ffebeb; border-color: #ff9999;">
+                        <legend style="color:red;">⚠ ALLERGIES</legend>
+                        <textarea
+                            style="width: 100%; height: 60px; border: 1px solid #ff9999; background: #fff0f0; font-family: Tahoma; font-size: 11px;">PENICILLIN (RASH)</textarea>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Key Alerts</legend>
+                        <div class="form-row">
+                            <input type="checkbox"> Diabetic <br>
+                        </div>
+                        <div class="form-row">
+                            <input type="checkbox" checked> CHAS Green <br>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+
+            <div class="tabs">
+                <div class="tab active">Insurance Plans</div>
+                <div class="tab">Visit History</div>
+                <div class="tab">Documents</div>
+                <div class="tab">Family Links</div>
+            </div>
+
+            <div class="tab-content">
+                <table class="grid-table">
+                    <thead>
+                        <tr>
+                            <th>Type</th>
+                            <th>Insurer</th>
+                            <th>Policy No.</th>
+                            <th>Expiry</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>CORP</td>
+                            <td>MHC</td>
+                            <td>MHC-88291</td>
+                            <td>31/12/2026</td>
+                            <td style="color:green;">ACTIVE</td>
+                        </tr>
+                        <tr>
+                            <td>PVT</td>
+                            <td>AIA</td>
+                            <td>AIA-99921</td>
+                            <td>-</td>
+                            <td style="color:gray;">LAPSED</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br>
+                <button style="width: 100px;">+ Add Plan</button>
+            </div>
+
+        </div>
+
+        <div class="status-bar">
+            <span>User: DR. KEVIN</span>
+            <span>Server: SG-CLINIC-MAIN [Connected]</span>
+        </div>
+    </div>
+
+</body>
+
+</html>

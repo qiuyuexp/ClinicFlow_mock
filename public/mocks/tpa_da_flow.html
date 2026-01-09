@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DA - Panel Coverage Check</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f3f4f6;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+        }
+
+        .header {
+            background-color: white;
+            width: 100%;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 10;
+        }
+
+        .brand {
+            font-size: 20px;
+            font-weight: bold;
+            color: #ef4444;
+            /* Red */
+        }
+
+        .container {
+            margin-top: 100px;
+            background: white;
+            width: 600px;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            margin-top: 0;
+            color: #1f2937;
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #374151;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            box-sizing: border-box;
+            /* Critical for layout */
+        }
+
+        input[type="text"]:focus {
+            border-color: #ef4444;
+            outline: none;
+        }
+
+        .verify-btn {
+            background: linear-gradient(135deg, #FF4B2B 0%, #FF416C 100%);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .verify-btn:hover {
+            opacity: 0.9;
+        }
+
+        #result-section {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #f0fdf4;
+            /* Green-50 */
+            border: 1px solid #bbf7d0;
+            border-radius: 8px;
+            display: none;
+            /* Hidden by default */
+        }
+
+        .result-visible {
+            display: block !important;
+        }
+
+        .status-badge {
+            background-color: #dcfce7;
+            color: #166534;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        .loading {
+            text-align: center;
+            color: #6b7280;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <div class="brand">Doctor Anywhere</div>
+        <div style="color: #6b7280; font-size: 14px;">Provider Portal</div>
+    </div>
+
+    <div class="container">
+        <h1>Check Eligibility</h1>
+        <p style="color: #6b7280;">Enter NRIC to verify coverage.</p>
+
+        <div class="form-group">
+            <label for="nric-input">Patient NRIC / FIN</label>
+            <input type="text" id="nric-input" placeholder="e.g. S1234567Z">
+            <button id="verify-btn" class="verify-btn">Verify Coverage</button>
+        </div>
+
+        <div id="loading" class="loading">
+            Searching database...
+        </div>
+
+        <div id="result-section">
+            <div class="status-badge">ELIGIBLE FOR CASHLESS</div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                <div>
+                    <small style="color: #6b7280;">Name</small><br>
+                    <strong>TAN AH GAO</strong>
+                </div>
+                <div>
+                    <small style="color: #6b7280;">Co-Pay</small><br>
+                    <strong style="color: #ef4444;">$5.00</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="tpa_da_flow.js"></script>
+</body>
+
+</html>
