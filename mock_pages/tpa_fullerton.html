@@ -4,218 +4,277 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fullerton Health - Provider Portal</title>
+    <title>Fullerton Health - Provider Excellence Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600;700&display=swap');
+
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f6f9;
-            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5;
         }
 
-        .header {
+        .fullerton-navy {
             background-color: #003366;
-            color: white;
-            padding: 15px 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 4px solid #ffcc00;
         }
 
-        .logo {
-            font-size: 24px;
-            font-weight: bold;
+        .fullerton-gold {
+            background-color: #ffcc00;
         }
 
-        .container {
-            max-width: 1000px;
-            margin: 30px auto;
-            background: white;
-            border: 1px solid #ddd;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        .nav-tabs {
-            background: #eee;
-            border-bottom: 1px solid #ddd;
-            padding: 0 20px;
-            display: flex;
-            gap: 5px;
-        }
-
-        .tab {
-            padding: 12px 20px;
-            background: #ddd;
-            color: #555;
-            cursor: pointer;
-            font-size: 14px;
-            font-weight: bold;
-            margin-top: 5px;
-            border-radius: 4px 4px 0 0;
-        }
-
-        .tab.active {
-            background: white;
+        .text-fullerton-navy {
             color: #003366;
-            border: 1px solid #ddd;
-            border-bottom: 1px solid white;
         }
 
-        .content {
-            padding: 40px;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-label {
-            display: block;
-            font-weight: bold;
-            margin-bottom: 5px;
-            color: #333;
-            font-size: 13px;
-        }
-
-        .form-input {
-            padding: 8px;
-            border: 1px solid #ccc;
-            width: 300px;
-        }
-
-        .btn-submit {
-            background-color: #0056b3;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            cursor: pointer;
-            font-weight: bold;
-        }
-
-        .btn-submit:hover {
-            background-color: #004494;
-        }
-
-        .result-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-            font-size: 13px;
-        }
-
-        .result-table th {
-            background-color: #003366;
-            color: white;
-            padding: 10px;
-            text-align: left;
-        }
-
-        .result-table td {
-            border: 1px solid #ddd;
-            padding: 10px;
-        }
-
-        .status-active {
-            color: green;
-            font-weight: bold;
-        }
-
-        .hidden {
-            display: none;
+        .active-tab {
+            border-bottom: 4px solid #ffcc00;
+            color: #003366 !important;
+            font-weight: 700;
         }
     </style>
 </head>
 
-<body>
+<body class="min-h-screen flex flex-col">
 
-    <div class="header">
-        <div class="logo">Fullerton Health</div>
-        <div style="font-size: 14px;">Welcome, Bedok Medical Clinic (SG-8221) | <a href="#"
-                style="color:#ffcc00;">Logout</a></div>
-    </div>
-
-    <div class="container">
-        <div class="nav-tabs">
-            <div class="tab">Dashboard</div>
-            <div class="tab active">Benefit Enquiry</div>
-            <div class="tab">Claims Submission</div>
-            <div class="tab">Reports</div>
-        </div>
-
-        <div class="content">
-            <h2 style="margin-top:0; color: #003366; border-bottom: 2px solid #eee; padding-bottom: 10px;">Benefit
-                Entitlement Enquiry</h2>
-
-            <div style="background: #fdfdfd; padding: 20px; border: 1px solid #eee; margin-bottom: 20px;">
-                <div class="form-group">
-                    <label class="form-label">Search Criteria</label>
-                    <select class="form-input">
-                        <option>NRIC / FIN</option>
-                        <option>Member ID</option>
-                        <option>Passport No</option>
-                    </select>
+    <!-- Header -->
+    <header class="fullerton-navy text-white shadow-xl relative z-10 no-print">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-8">
+                <div class="flex flex-col">
+                    <span class="text-2xl font-black tracking-tighter uppercase italic">Fullerton<span
+                            class="text-fullerton-gold">Health</span></span>
+                    <span class="text-[10px] uppercase tracking-[0.2em] font-bold opacity-60">Provider Excellence
+                        Portal</span>
                 </div>
-                <div class="form-group">
-                    <label class="form-label">Identification Number</label>
-                    <input type="text" id="nricInput" class="form-input" placeholder="Enter Patient NRIC">
+
+                <div class="hidden lg:flex items-center gap-4 bg-white/10 px-4 py-2 rounded-lg border border-white/10">
+                    <div class="text-xs">
+                        <div class="opacity-60 font-bold uppercase text-[9px]">Location</div>
+                        <div class="font-bold flex items-center gap-1">Bedok Medical <i
+                                class="fas fa-chevron-down text-[10px] text-fullerton-gold"></i></div>
+                    </div>
+                    <div class="w-px h-8 bg-white/20"></div>
+                    <div class="text-xs">
+                        <div class="opacity-60 font-bold uppercase text-[9px]">Clinic ID</div>
+                        <div class="font-bold">SG-8221</div>
+                    </div>
                 </div>
-                <button class="btn-submit">Search Database</button>
             </div>
 
-            <div id="resultsArea" class="hidden">
-                <h3 style="color: #666; font-size: 16px;">Search Results</h3>
+            <div class="flex items-center gap-6">
+                <div class="hidden md:block text-right">
+                    <div class="text-sm font-bold">Welcome, Dr. Simon K.</div>
+                    <div class="text-[10px] opacity-70">Administrator Access</div>
+                </div>
+                <div class="flex gap-2">
+                    <div
+                        class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-all cursor-pointer relative">
+                        <i class="fas fa-bell"></i>
+                        <span
+                            class="absolute top-0 right-0 w-3 h-3 bg-red-500 rounded-full border-2 border-[#003366]"></span>
+                    </div>
+                    <button
+                        class="w-10 h-10 bg-fullerton-gold text-[#003366] rounded-full flex items-center justify-center hover:scale-105 transition-all shadow-lg font-bold">
+                        <i class="fas fa-power-off"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
 
-                <table class="result-table">
-                    <thead>
-                        <tr>
-                            <th>Company</th>
-                            <th>Member Name</th>
-                            <th>Plan</th>
-                            <th>Visit Type</th>
-                            <th>Co-Pay (GST incl.)</th>
-                            <th>Status</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>AON SINGAPORE PTE LTD</td>
-                            <td>TAN AH GAO</td>
-                            <td>Fullerton Gold</td>
-                            <td>Acute</td>
-                            <td>$25.00</td>
-                            <td class="status-active">COVERED - Standard GP</td>
-                        </tr>
-                    </tbody>
-                </table>
+        <!-- Main Nav -->
+        <nav class="bg-white border-b border-gray-200">
+            <div class="max-w-7xl mx-auto px-6 flex gap-8">
+                <a href="#"
+                    class="px-2 py-4 text-sm font-semibold text-gray-500 hover:text-fullerton-navy transition-all">Dashboard</a>
+                <a href="#" class="px-2 py-4 text-sm font-semibold text-gray-500 active-tab">Benefit Enquiry</a>
+                <a href="#"
+                    class="px-2 py-4 text-sm font-semibold text-gray-500 hover:text-fullerton-navy transition-all">Claims
+                    Submission</a>
+                <a href="#"
+                    class="px-2 py-4 text-sm font-semibold text-gray-500 hover:text-fullerton-navy transition-all">Reports</a>
+                <a href="#"
+                    class="px-2 py-4 text-sm font-semibold text-gray-500 hover:text-fullerton-navy transition-all">Support</a>
+            </div>
+        </nav>
+    </header>
 
-                <br>
+    <!-- Main Content -->
+    <main class="flex-1 max-w-7xl mx-auto w-full px-6 py-8 grid grid-cols-1 lg:grid-cols-4 gap-8">
+
+        <!-- Search Criteria (Left Panel) -->
+        <div class="lg:col-span-1 space-y-6 no-print">
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
+                <div class="p-5 border-b border-gray-100 bg-gray-50">
+                    <h3 class="font-bold text-gray-800 flex items-center gap-2">
+                        <i class="fas fa-search text-fullerton-navy"></i> Search Criteria
+                    </h3>
+                </div>
+                <div class="p-5 space-y-4">
+                    <div>
+                        <label class="block text-[10px] font-bold text-gray-400 uppercase mb-1.5 tracking-wider">Search
+                            By</label>
+                        <select
+                            class="w-full bg-gray-50 border border-gray-200 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-fullerton-navy/10 focus:border-fullerton-navy outline-none">
+                            <option>NRIC / FIN</option>
+                            <option>Member ID</option>
+                            <option>Passport No</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label
+                            class="block text-[10px] font-bold text-gray-400 uppercase mb-1.5 tracking-wider">Identification
+                            Number</label>
+                        <input type="text" id="nricInput" placeholder="Enter Patient NRIC"
+                            class="w-full bg-gray-50 border border-gray-200 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-fullerton-navy/10 focus:border-fullerton-navy outline-none transition-all">
+                    </div>
+                    <button onclick="searchPatient()"
+                        class="btn-submit w-full bg-fullerton-navy text-white font-bold py-3 rounded-lg hover:bg-[#002244] transition-all shadow-lg active:scale-95">
+                        Verify Eligibility
+                    </button>
+                </div>
+            </div>
+
+            <!-- Quick Stats -->
+            <div class="bg-fullerton-navy rounded-2xl p-6 text-white shadow-xl relative overflow-hidden group">
+                <i
+                    class="fas fa-file-invoice absolute -bottom-4 -right-4 text-8xl opacity-10 group-hover:rotate-12 transition-transform"></i>
+                <h4 class="text-xs font-bold uppercase tracking-widest opacity-60 mb-4">Pending Payments</h4>
+                <div class="text-3xl font-black mb-1">$4,281<span class="text-fullerton-gold">.50</span></div>
+                <div class="text-[10px] opacity-70">12 claims awaiting reconciliation</div>
+                <button class="mt-4 text-[10px] font-bold text-fullerton-gold hover:underline">View Claims Report <i
+                        class="fas fa-arrow-right ml-1"></i></button>
+            </div>
+        </div>
+
+        <!-- Content Area (Right Panel) -->
+        <div class="lg:col-span-3 space-y-6">
+
+            <!-- Result Placeholder -->
+            <div id="resultsArea" class="hidden animate-in fade-in slide-in-from-bottom-4 duration-500">
+
+                <!-- Member Insight Card -->
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden mb-6">
+                    <div
+                        class="p-6 bg-gradient-to-r from-gray-50 to-white flex items-center justify-between border-b border-gray-100">
+                        <div class="flex items-center gap-4">
+                            <div
+                                class="w-16 h-16 bg-fullerton-navy text-white rounded-xl flex items-center justify-center text-3xl font-bold shadow-lg">
+                                TK
+                            </div>
+                            <div>
+                                <h2 class="text-xl font-black text-gray-900 leading-none">TAN AH KAO <span
+                                        class="bg-green-100 text-green-700 text-[10px] px-2 py-0.5 rounded-full align-middle ml-2 font-bold italic uppercase tracking-tighter">Verified</span>
+                                </h2>
+                                <div class="mt-2 text-xs font-medium text-gray-500 flex gap-4">
+                                    <span>Member ID: <strong class="text-gray-900 uppercase">F00982711</strong></span>
+                                    <span>Plan: <strong class="text-fullerton-navy uppercase">Fullerton Gold
+                                            Plus</strong></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-[10px] font-bold text-gray-400 uppercase mb-1">Policy Status</div>
+                            <div class="text-green-600 font-black text-lg">ACTIVE</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Detailed Benefit Table -->
+                <div class="bg-white rounded-2xl shadow-md border border-gray-200 overflow-hidden">
+                    <table class="w-full text-left">
+                        <thead>
+                            <tr class="bg-fullerton-navy text-white text-[10px] font-bold uppercase tracking-widest">
+                                <th class="px-6 py-4">Entitlement Category</th>
+                                <th class="px-6 py-4">Treatment Type</th>
+                                <th class="px-6 py-4">Benefit Provision</th>
+                                <th class="px-6 py-4">Co-Pay / Deductible</th>
+                                <th class="px-6 py-4 text-right">Remaining Limit</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-100">
+                            <tr class="hover:bg-gray-50 transition-colors">
+                                <td class="px-6 py-5">
+                                    <div class="text-sm font-bold text-gray-900">General Practitioner</div>
+                                    <div class="text-[10px] text-gray-400 mt-1 uppercase font-medium">Standard
+                                        Outpatient</div>
+                                </td>
+                                <td class="px-6 py-5">
+                                    <span
+                                        class="text-xs bg-blue-50 text-blue-600 px-2.5 py-1 rounded-lg font-bold">Standard</span>
+                                </td>
+                                <td class="px-6 py-5">
+                                    <div class="text-xs font-bold text-gray-700">Cashless Visit</div>
+                                    <div class="text-[10px] text-gray-400 italic">Up to $50.00 / consultation</div>
+                                </td>
+                                <td class="px-6 py-5">
+                                    <div class="text-sm font-black text-gray-900">$25.00</div>
+                                    <div class="text-[9px] text-gray-400 font-bold uppercase tracking-tighter">Per
+                                        Consultation</div>
+                                </td>
+                                <td class="px-6 py-5 text-right">
+                                    <div class="text-sm font-black text-gray-900">$850.00</div>
+                                    <div class="text-[9px] text-gray-400 font-bold uppercase">Of $1,000.00 Anno</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Alert Section -->
+                <div class="mt-8 bg-amber-50 border border-amber-200 rounded-2xl p-6 flex items-start gap-4">
+                    <div
+                        class="w-10 h-10 bg-amber-100 text-amber-600 rounded-full flex items-center justify-center shrink-0">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-amber-800 mb-1">Verification Protocols Required</h4>
+                        <p class="text-sm text-amber-700 leading-relaxed font-semibold">Verify patient's physical NRIC /
+                            FIN card against the system records. Ensure the clinic staff cross-checks the registered
+                            name. Any discrepancies must be reported immediately to the provider hotline.</p>
+                        <p
+                            class="mt-4 text-[10px] font-black text-amber-800 uppercase tracking-widest underline cursor-pointer">
+                            View Benefit Coverage Guide (PDF)</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Empty State / Welcome -->
+            <div id="welcomeArea" class="bg-white rounded-3xl border border-dashed border-gray-300 p-20 text-center">
                 <div
-                    style="background: #fffff0; border: 1px solid #ffd700; padding: 10px; font-size: 12px; color: #555;">
-                    <strong>Note to Clinic:</strong> Verify patient's original NRIC against the record above. Co-payment
-                    is to be collected from patient at point of service.
+                    class="w-20 h-20 bg-gray-50 border border-gray-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                    <i class="fas fa-id-card-alt text-4xl text-gray-200"></i>
                 </div>
+                <h3 class="text-xl font-bold text-gray-800 mb-2">Benefit Entitlement Enquiry</h3>
+                <p class="text-gray-400 max-w-sm mx-auto text-sm">Please enter the patient's identification number on
+                    the left to verify insurance eligibility and co-payment details.</p>
             </div>
-
         </div>
-    </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-200 py-8 mt-12 bg-gray-50 no-print">
+        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center text-gray-400">
+            <div class="text-xs font-bold uppercase tracking-widest">© 2026 Fullerton Health Corporate Group</div>
+            <div class="flex gap-6 text-[10px] font-black uppercase tracking-tighter">
+                <a href="#" class="hover:text-fullerton-navy">Security Policy</a>
+                <a href="#" class="hover:text-fullerton-navy">Data Privacy</a>
+                <a href="#" class="hover:text-fullerton-navy">IT Support</a>
+            </div>
+        </div>
+    </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const btn = document.querySelector('.btn-submit');
-            if (btn) {
-                btn.addEventListener('click', searchPatient);
-            }
-        });
-
         function searchPatient() {
             const input = document.getElementById('nricInput');
             if (input && input.value.trim() !== "") {
+                document.getElementById('welcomeArea').classList.add('hidden');
                 const results = document.getElementById('resultsArea');
                 if (results) {
                     results.classList.remove('hidden');
                 }
             } else {
-                alert("Please enter an NRIC/FIN number.");
+                alert("Authorization Denied: NRIC/FIN identification is required for eligibility verification.");
             }
         }
     </script>
