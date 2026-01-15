@@ -132,42 +132,37 @@
 
             <!-- VIEW 1: Patient Details -->
             <div id="view-patient" class="transition-opacity duration-300">
-                <div class="grid grid-cols-3 gap-6">
-                    <!-- Column 1 -->
-                    <div class="col-span-2 space-y-6">
-                        <section class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-                            <h3 class="text-md font-semibold text-gray-800 mb-4 border-b pb-2">Clinical Notes</h3>
-                            <div class="space-y-4">
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-1">Chief Complaint</label>
-                                    <textarea
-                                        class="w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 p-2 border"
-                                        rows="2">Low back pain, radiating to left leg.</textarea>
-                                </div>
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-1">Diagnosis
-                                        (ICD-10)</label>
-                                    <div class="relative">
-                                        <i class="fas fa-search absolute left-3 top-3 text-gray-400"></i>
-                                        <input type="text" value="M54.5 (Low Back Pain)"
-                                            class="w-full pl-10 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 p-2 border">
-                                    </div>
+                <!-- Centered Container -->
+                <div class="max-w-4xl mx-auto space-y-6">
+                    <section class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+                        <h3 class="text-md font-semibold text-gray-800 mb-4 border-b pb-2 text-center">Clinical Notes
+                        </h3>
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Chief Complaint</label>
+                                <textarea
+                                    class="w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 p-2 border"
+                                    rows="2">Low back pain, radiating to left leg.</textarea>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Diagnosis
+                                    (ICD-10)</label>
+                                <div class="relative">
+                                    <i class="fas fa-search absolute left-3 top-3 text-gray-400"></i>
+                                    <input type="text" value="M54.5 (Low Back Pain)"
+                                        class="w-full pl-10 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 p-2 border">
                                 </div>
                             </div>
-                        </section>
+                        </div>
+                    </section>
+
+
+                    <div class="mt-6 flex justify-end">
+                        <button onclick="switchView('billing')"
+                            class="px-6 py-2 bg-blue-600 text-white rounded-md max-w-xs shadow-lg hover:bg-blue-700 font-medium">
+                            Proceed to Billing <i class="fas fa-arrow-right ml-2"></i>
+                        </button>
                     </div>
-
-                    <!-- Column 2 (Side) -->
-                    <div class="space-y-6">
-
-                    </div>
-                </div>
-
-                <div class="mt-6 flex justify-end">
-                    <button onclick="switchView('billing')"
-                        class="px-6 py-2 bg-blue-600 text-white rounded-md max-w-xs shadow-lg hover:bg-blue-700 font-medium">
-                        Proceed to Billing <i class="fas fa-arrow-right ml-2"></i>
-                    </button>
                 </div>
             </div>
 
