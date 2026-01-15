@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DA TPA Portal - Provider Login</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f4f8;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        .header {
+            background-color: #6a1b9a;
+            /* Purple theme */
+            color: white;
+            padding: 15px 40px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .main-container {
+            max-width: 900px;
+            margin: 40px auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            min-height: 500px;
+        }
+
+        .search-section {
+            padding: 40px;
+            background: linear-gradient(to bottom, #fff, #f9f9f9);
+            border-bottom: 1px solid #eaeaea;
+            text-align: center;
+        }
+
+        .search-title {
+            color: #4a148c;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .input-group {
+            display: inline-flex;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .search-input {
+            padding: 12px 20px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-right: none;
+            width: 300px;
+            outline: none;
+        }
+
+        .search-btn {
+            padding: 12px 25px;
+            background-color: #009688;
+            /* Teal accent */
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+
+        .search-btn:hover {
+            background-color: #00796b;
+        }
+
+        .results-section {
+            padding: 40px;
+            display: none;
+            /* Hidden by default */
+        }
+
+        .no-result-card {
+            background-color: #fff3e0;
+            border-left: 5px solid #ff9800;
+            padding: 20px;
+            border-radius: 4px;
+            color: #e65100;
+        }
+
+        .no-result-icon {
+            font-size: 40px;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: #999;
+            font-size: 12px;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <div class="logo">DA TPA Portal</div>
+        <div>Clinic: Bedok Medical (SG-8822)</div>
+    </div>
+
+    <div class="main-container">
+        <div class="search-section">
+            <h2 class="search-title">Member Eligibility Check</h2>
+            <div class="input-group">
+                <input type="text" id="da-nric-input" class="search-input" placeholder="Enter NRIC / FIN">
+                <button class="search-btn" onclick="performSearch()">Check Status</button>
+            </div>
+        </div>
+
+        <div id="result-container" class="results-section">
+            <!-- Content injected via JS -->
+        </div>
+    </div>
+
+    <div class="footer">
+        &copy; 2026 DA TPA Administrators. All rights reserved.
+    </div>
+
+    <script>
+        function performSearch() {
+            const nric = document.getElementById('da-nric-input').value.trim();
+            const container = document.getElementById('result-container');
+
+            if (!nric) {
+                alert("Please enter a valid NRIC.");
+                return;
+            }
+
+            // Simulate network delay
+            container.style.display = 'none';
+            setTimeout(() => {
+                container.style.display = 'block';
+                // Always return 'No Result' for this mock as requested
+                container.innerHTML = `
+                    <div class="no-result-card">
+                        <span class="no-result-icon">⚠️</span>
+                        <h3>No Active Policy Found</h3>
+                        <p>The NRIC <strong>${nric}</strong> is not associated with any active coverage plan in our system.</p>
+                        <p>Please check the number or contact the HR representative for verification.</p>
+                        <hr style="border: 0; border-top: 1px solid #ffe0b2; margin: 15px 0;">
+                        <small>Reference ID: DA-ERR-404-992</small>
+                    </div>
+                `;
+            }, 600);
+        }
+    </script>
+
+</body>
+
+</html>
