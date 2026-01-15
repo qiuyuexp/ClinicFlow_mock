@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Global Health TPA Portal - Provider Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        .top-bar {
+            background-color: #000;
+            color: #fff;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .main-content {
+            background-color: #fff;
+            max-width: 1000px;
+            margin: 30px auto;
+            min-height: 600px;
+            padding: 30px;
+            border-radius: 4px;
+        }
+
+        /* Tabs */
+        .tabs {
+            border-bottom: 2px solid #ddd;
+            margin-bottom: 20px;
+        }
+
+        .tab-btn {
+            padding: 10px 20px;
+            border: none;
+            background: none;
+            font-size: 16px;
+            cursor: pointer;
+            color: #666;
+        }
+
+        .tab-btn.active {
+            border-bottom: 3px solid #28a745;
+            color: #28a745;
+            font-weight: bold;
+        }
+
+        /* Sections */
+        .portal-section {
+            display: none;
+        }
+
+        .portal-section.active {
+            display: block;
+        }
+
+        /* Form Elements */
+        .search-box {
+            background: #f9f9f9;
+            padding: 20px;
+            border: 1px solid #ddd;
+            margin-bottom: 20px;
+        }
+
+        .result-box {
+            border: 1px solid #c3e6cb;
+            background-color: #d4edda;
+            color: #155724;
+            padding: 15px;
+            display: none;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        input[type="file"] {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            box-sizing: border-box;
+        }
+
+        .submit-btn {
+            background-color: #0069d9;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            margin-top: 20px;
+            cursor: pointer;
+            width: 100%;
+        }
+    </style>
+    <script>
+        function showTab(tabId) {
+            document.querySelectorAll('.portal-section').forEach(d => d.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        function mockSearch() {
+            // 模拟搜索 loading
+            document.getElementById('search-result').style.display = 'none';
+            setTimeout(() => {
+                document.getElementById('search-result').style.display = 'block';
+            }, 500);
+        }
+    </script>
+</head>
+
+<body>
+
+    <div class="top-bar">
+        <span>Global Health TPA Solutions</span>
+        <span>Logged in: Dr. Sim Clinic</span>
+    </div>
+
+    <div class="main-content">
+        <div class="tabs">
+            <button class="tab-btn active" onclick="showTab('eligibility')">1. Verify Eligibility</button>
+            <button class="tab-btn" onclick="showTab('claims')">2. Submit Claim</button>
+        </div>
+
+        <div id="eligibility" class="portal-section active">
+            <h2>Check Patient Coverage</h2>
+            <div class="search-box">
+                <label>Member NRIC / Passport No:</label>
+                <input type="text" id="tpa-search-nric" placeholder="e.g. S1234567X">
+
+                <button class="submit-btn" id="btn-check-eligibility" onclick="mockSearch()"
+                    style="width: auto; margin-top: 15px;">Search</button>
+            </div>
+
+            <div id="search-result" class="result-box">
+                <h4>Member Found: TAN AH KAO</h4>
+                <p>Plan Status: <strong>ACTIVE</strong></p>
+                <p>Company: TECH SOLUTIONS PTE LTD</p>
+                <hr>
+                <p>Co-Payment Required: SGD <strong id="tpa-result-copay" style="font-size: 1.2em;">10.00</strong></p>
+                <p>Visit Reference: <span id="tpa-visit-ref">GH-2026-998877</span></p>
+            </div>
+        </div>
+
+        <div id="claims" class="portal-section">
+            <h2>New Claim Submission</h2>
+            <p>Please ensure all fields match the Tax Invoice.</p>
+
+            <form onsubmit="alert('Claim Submitted via TPA!'); return false;">
+                <label>Patient NRIC</label>
+                <input type="text" id="claim-nric" value="S1234567D">
+
+                <label>Diagnosis Code (ICD-10)</label>
+                <input type="text" id="claim-diagnosis" placeholder="Search diagnosis...">
+
+                <label>Consultation Fee ($)</label>
+                <input type="number" id="claim-fee-consult" step="0.01">
+
+                <label>Medication / Others ($)</label>
+                <input type="number" id="claim-fee-meds" step="0.01">
+
+                <label>Upload Invoice (PDF)</label>
+                <input type="file" id="claim-file-upload">
+
+                <button type="submit" class="submit-btn" id="btn-submit-claim">Submit Claim</button>
+            </form>
+        </div>
+    </div>
+
+</body>
+
+</html>
